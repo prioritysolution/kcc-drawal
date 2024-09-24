@@ -64,7 +64,6 @@ const Home = () => {
           const parsedData = XLSX.utils.sheet_to_json<Info>(sheet);
 
           setData(parsedData);
-          console.log(parsedData);
         }
       };
     }
