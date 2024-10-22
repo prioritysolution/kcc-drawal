@@ -53,6 +53,7 @@ const Home = () => {
         toast.error(data.message);
       }
     } catch (error) {
+      console.log(error);
       toast.error("An error occurred during authentication.");
     }
   };
