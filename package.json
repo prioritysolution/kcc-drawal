@@ -10,16 +10,19 @@
   },
   "dependencies": {
     "date-fns": "^4.1.0",
+    "js-cookie": "^3.0.5",
     "next": "14.2.13",
     "react": "^18",
     "react-dom": "^18",
+    "react-hot-toast": "^2.4.1",
     "react-icons": "^5.3.0",
     "react-to-print": "^2.15.1",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
+    "@types/js-cookie": "^3.0.6",
+    "@types/node": "^22.7.0",
+    "@types/react": "^18.3.9",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.13",

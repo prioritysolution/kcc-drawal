@@ -31,6 +31,15 @@ interface ContentProps {
 }
 
 const Content: React.FC<ContentProps> = ({ data, formData }) => {
+  function fixDecimal(value: number) {
+    const [integerPart, decimalPart] = value.toString().split(".");
+    if (!decimalPart) {
+      return `${integerPart}.00`; // No decimal part, return with .00
+    }
+    // Ensure the decimal part is exactly two digits
+    return `${integerPart}.${decimalPart.padEnd(2, "0").slice(0, 2)}`;
+  }
+
   return (
     <div className="w-[356mm] h-[216mm] bg-white p-4 shadow-[10px_10px_40px_-15px_rgba(0,0,0,0.3)] flex flex-col justify-between gap-1 relative">
       {/* The content structure here remains the same as in your App component */}
@@ -105,7 +114,7 @@ const Content: React.FC<ContentProps> = ({ data, formData }) => {
                     className="border border-white text-xs font-medium p-1"
                     colSpan={2}
                   >
-                    খতিয়ান নং
+                    পূর্বের ঋণ পরিশোধের বিবরণ
                   </th>
                   <th className="border border-white text-xs font-medium p-1">
                     স্বল্প মেয়াদী কর্জ বাবদ বর্তমান সমিতিতে দেনার পরিমাণ
@@ -114,7 +123,7 @@ const Content: React.FC<ContentProps> = ({ data, formData }) => {
                     className="border border-white text-xs font-medium p-1"
                     colSpan={4}
                   >
-                    প্রার্থিত অর্থের পরিমাণ
+                    প্রার্থিক অর্থের পরিমাণ
                   </th>
                   <th
                     className="border border-white text-xs font-medium p-1"
@@ -157,7 +166,7 @@ const Content: React.FC<ContentProps> = ({ data, formData }) => {
                   <th className="border border-white text-xs font-medium p-1 w-[80px]">
                     তারিখ
                   </th>
-                  <th className="border border-white text-xs font-medium p-1 w-[60px]">
+                  <th className="border border-white text-xs font-medium p-1 w-[80px]">
                     টাকা
                   </th>
                   <th className="border border-white text-xs font-medium p-1">
@@ -198,16 +207,16 @@ const Content: React.FC<ContentProps> = ({ data, formData }) => {
                   <th className="border border-white text-xs font-medium p-1 w-[50px]">
                     ৩
                   </th>
-                  <th className="border border-white text-xs font-medium p-1 w-[50px]">
+                  <th className="border border-white text-xs font-medium p-1 w-[45px]">
                     ৪
                   </th>
-                  <th className="border border-white text-xs font-medium p-1 w-[50px]">
+                  <th className="border border-white text-xs font-medium p-1 w-[45px]">
                     ৫
                   </th>
-                  <th className="border border-white text-xs font-medium p-1 w-[50px]">
+                  <th className="border border-white text-xs font-medium p-1 w-[45px]">
                     ৬
                   </th>
-                  <th className="border border-white text-xs font-medium p-1 w-[60px]">
+                  <th className="border border-white text-xs font-medium p-1 w-[80px]">
                     ৭
                   </th>
                   <th className="border border-white text-xs font-medium p-1 w-[50px]">
@@ -222,31 +231,31 @@ const Content: React.FC<ContentProps> = ({ data, formData }) => {
                   <th className="border border-white text-xs font-medium p-1 w-[80px]">
                     ১০
                   </th>
-                  <th className="border border-white text-xs font-medium p-1 w-[50px]">
+                  <th className="border border-white text-xs font-medium p-1 w-[45px]">
                     ১১
                   </th>
-                  <th className="border border-white text-xs font-medium p-1 w-[50px]">
+                  <th className="border border-white text-xs font-medium p-1 w-[45px]">
                     ১২
                   </th>
-                  <th className="border border-white text-xs font-medium p-1 w-[50px]">
+                  <th className="border border-white text-xs font-medium p-1 w-[45px]">
                     ১৩
                   </th>
-                  <th className="border border-white text-xs font-medium p-1 w-[60px]">
+                  <th className="border border-white text-xs font-medium p-1 w-[80px]">
                     ১৪
                   </th>
-                  <th className="border border-white text-xs font-medium p-1 w-[100px]">
+                  <th className="border border-white text-xs font-medium p-1 w-[120px]">
                     ১৫
                   </th>
-                  <th className="border border-white text-xs font-medium p-1 w-[50px]">
+                  <th className="border border-white text-xs font-medium p-1 w-[45px]">
                     ১৬
                   </th>
-                  <th className="border border-white text-xs font-medium p-1 w-[50px]">
+                  <th className="border border-white text-xs font-medium p-1 w-[45px]">
                     ১৭
                   </th>
-                  <th className="border border-white text-xs font-medium p-1 w-[50px]">
+                  <th className="border border-white text-xs font-medium p-1 w-[45px]">
                     ১৮
                   </th>
-                  <th className="border border-white text-xs font-medium p-1 w-[60px]">
+                  <th className="border border-white text-xs font-medium p-1 w-[80px]">
                     ১৯
                   </th>
                   <th className="border border-white text-xs font-medium p-1">
@@ -272,30 +281,34 @@ const Content: React.FC<ContentProps> = ({ data, formData }) => {
                     <td className="border border-white text-xs px-1 "></td>
                     <td className="border border-white text-xs px-1 "></td>
                     <td className="border border-white text-xs px-1 ">
-                      {item.New_Loan_Disbursed_Amount}
+                      {item.Credit_Limit_Amount &&
+                        fixDecimal(item.Credit_Limit_Amount)}
                     </td>
                     <td className="border border-white text-xs px-1 "></td>
                     <td className="border border-white text-xs px-1 ">
                       {item.Old_Loan_Repaid_full_on}
                     </td>
                     <td className="border border-white text-xs px-1 ">
-                      {item.Old_Loan_Amount}
+                      {item.Old_Loan_Amount && fixDecimal(item.Old_Loan_Amount)}
                     </td>
                     <td className="border border-white text-xs px-1 ">
-                      {item.Last_Crop_Loan_Due}
-                    </td>
-                    <td className="border border-white text-xs px-1 "></td>
-                    <td className="border border-white text-xs px-1 "></td>
-                    <td className="border border-white text-xs px-1 "></td>
-                    <td className="border border-white text-xs px-1 ">
-                      {item.New_Loan_Disbursed_Amount}
+                      {item.Last_Crop_Loan_Due &&
+                        fixDecimal(item.Last_Crop_Loan_Due)}
                     </td>
                     <td className="border border-white text-xs px-1 "></td>
                     <td className="border border-white text-xs px-1 "></td>
                     <td className="border border-white text-xs px-1 "></td>
+                    <td className="border border-white text-xs px-1 ">
+                      {item.New_Loan_Disbursed_Amount &&
+                        fixDecimal(item.New_Loan_Disbursed_Amount)}
+                    </td>
+                    <td className="border border-white text-xs px-1 "></td>
+                    <td className="border border-white text-xs px-1 "></td>
+                    <td className="border border-white text-xs px-1 "></td>
                     <td className="border border-white text-xs px-1 "></td>
                     <td className="border border-white text-xs px-1 ">
-                      {item.New_Loan_Disbursed_Amount}
+                      {item.New_Loan_Disbursed_Amount &&
+                        fixDecimal(item.New_Loan_Disbursed_Amount)}
                     </td>
                     <td className="border border-white text-xs px-1 "></td>
                   </tr>
