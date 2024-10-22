@@ -19,7 +19,7 @@ const Home = () => {
 
     if (isAuthenticated) {
       // If user is authenticated, redirect to another page (e.g., dashboard)
-      router.push("/dashboard"); // Change this to your desired route
+      router.push("/generateForm"); // Change this to your desired route
     } else {
       setIsCheckingAuth(false); // Allow rendering if user is not authenticated
     }
@@ -48,7 +48,7 @@ const Home = () => {
         setUser({ username }); // Save authenticated user to context
         Cookies.set("isAuthenticated", "true"); // Save authentication status in a cookie
         toast.success(data.message);
-        router.push("/dashboard"); // Redirect to a different page after authentication
+        router.push("/generateForm"); // Redirect to a different page after authentication
       } else {
         toast.error(data.message);
       }
