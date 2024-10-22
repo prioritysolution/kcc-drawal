@@ -570,7 +570,7 @@ const GenerateForm = () => {
                       <span className="absolute left-5">
                         {headerInfoData.samitiName}
                       </span>
-                      ....................................................................
+                      ............................................................................................................
                       সমিতির পক্ষ্যে
                     </p>{" "}
                     <div className="flex items-center justify-between w-full gap-10">
@@ -580,7 +580,7 @@ const GenerateForm = () => {
                     </div>
                   </div>
 
-                  <div className="flex flex-col gap-8 justify-end items-start w-[60%]">
+                  <div className="flex flex-col gap-8 justify-end items-start w-[50%%]">
                     <p className="">
                       উপরোক্ত সভ্য গণের পূর্বে লওয়া করজের কর্জের খেলাপী বাকি
                       নাই

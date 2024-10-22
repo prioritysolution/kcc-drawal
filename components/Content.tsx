@@ -321,7 +321,7 @@ const Content: React.FC<ContentProps> = ({ data, formData }) => {
         <div className="flex justify-between items-center p-2 justify-self-end w-full text-sm opacity-0">
           <div className="flex flex-col gap-8 justify-end items-end">
             <p className="">
-              ....................................................................
+              ............................................................................................................
               সমিতির পক্ষ্যে
             </p>{" "}
             <div className="flex items-center justify-between w-full gap-10">
