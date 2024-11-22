@@ -78,32 +78,34 @@ const TamshukForm = () => {
   };
 
   const generatePDF = useReactToPrint({
-    content: () => printRef.current,
+    contentRef: printRef, // Pass the ref here
     pageStyle: `
-      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700&display=swap');
-      @page {
-        size: A4;
-        margin: 0;
-      }
-      body {
-        font-family: 'Noto Sans Bengali', sans-serif;
-        color: white;
-      }
-    `,
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700&display=swap');
+    @page {
+      size: A4;
+      margin: 0;
+    }
+    body {
+      font-family: 'Noto Sans Bengali', sans-serif;
+      color: white;
+    }
+  `,
+    documentTitle: "Tamshuk Form With Data",
   });
 
   const generateBlankPDF = useReactToPrint({
-    content: () => printBlankRef.current,
+    contentRef: printBlankRef, // Pass the ref here
     pageStyle: `
-      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700&display=swap');
-      @page {
-        size: A4;
-        margin: 0;
-      }
-      body {
-        font-family: 'Noto Sans Bengali', sans-serif;
-      }
-    `,
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700&display=swap');
+    @page {
+      size: A4;
+      margin: 0;
+    }
+    body {
+      font-family: 'Noto Sans Bengali', sans-serif;
+    }
+  `,
+    documentTitle: "Tamshuk Form Without Data",
   });
 
   // Handle change for form inputs
@@ -285,7 +287,7 @@ const TamshukForm = () => {
           <div className="w-[210mm] flex justify-end items-center font-roboto">
             <button
               className="px-8 py-2 bg-blue-500 text-white text-xl flex items-center gap-3 rounded-md disabled:bg-gray-300 disabled:cursor-not-allowed"
-              onClick={generateBlankPDF}
+              onClick={() => generateBlankPDF()}
             >
               Print <IoPrintSharp className="text-2xl" />
             </button>
@@ -538,7 +540,7 @@ const TamshukForm = () => {
             <button
               disabled={data.length === 0}
               className="px-8 py-2 bg-blue-500 text-white text-xl flex items-center gap-3 rounded-md disabled:bg-gray-300 disabled:cursor-not-allowed"
-              onClick={generatePDF}
+              onClick={() => generatePDF()}
             >
               Print <IoPrintSharp className="text-2xl" />
             </button>
