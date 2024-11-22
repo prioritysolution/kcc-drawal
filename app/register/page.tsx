@@ -5,18 +5,19 @@ import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 
-const Home = () => {
+const RegisterPage = () => {
+  const [society, setSociety] = useState<string>("");
   const [username, setUsername] = useState<string>("");
-  const [secret, setSecret] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const router = useRouter();
 
   // useEffect(() => {
   //   // Check if the user is authenticated either via context or cookie
   //   const isAuthenticated = Cookies.get("isAuthenticated");
 
-  //   if (isAuthenticated && isAuthenticated === "client") {
+  //   if (isAuthenticated && isAuthenticated === "admin") {
   //     // If user is authenticated, redirect to another page (e.g., dashboard)
-  //     router.push("/generateForm"); // Change this to your desired route
+  //     router.push("/users"); // Change this to your desired route
   //   } else {
   //     setIsCheckingAuth(false); // Allow rendering if user is not authenticated
   //   }
@@ -31,26 +32,26 @@ const Home = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("/api/authenticate", {
+      const res = await fetch("/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, secret }),
+        body: JSON.stringify({ society, username, password }),
       });
 
       const data = await res.json();
 
       if (data.success) {
-        Cookies.set("isAuthenticated", "client", { expires: 7 }); // Save authentication status in a cookie
-        router.push("/generateForm");
+        Cookies.set("isAuthenticated", "admin", { expires: 7 }); // Save authentication status in a cookie
+        router.push("/users");
         toast.success(data.message);
       } else {
         toast.error(data.message);
       }
     } catch (error) {
       console.log(error);
-      toast.error("An error occurred during authentication.");
+      toast.error("An error occurred during register.");
     }
   };
 
@@ -61,6 +62,19 @@ const Home = () => {
         onSubmit={handleSubmit}
         autoComplete="off"
       >
+        <div className="w-full h-full flex flex-col gap-2">
+          <label htmlFor="society" className="font-semibold">
+            Society Name
+          </label>
+          <input
+            type="text"
+            name="society"
+            id="society"
+            value={society}
+            onChange={(e) => setSociety(e.target.value)}
+            className="w-full px-2 py-3 border border-black rounded-md"
+          />
+        </div>
         <div className="w-full h-full flex flex-col gap-2">
           <label htmlFor="username" className="font-semibold">
             Username
@@ -75,21 +89,25 @@ const Home = () => {
           />
         </div>
         <div className="w-full h-full flex flex-col gap-2">
-          <label htmlFor="secret" className="font-semibold">
-            Secret Code
+          <label htmlFor="password" className="font-semibold">
+            Password
           </label>
           <input
             type="text"
-            name="secret"
-            id="secret"
-            value={secret}
-            onChange={(e) => setSecret(e.target.value)}
+            name="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className="w-full px-2 py-3 border border-black rounded-md"
           />
         </div>
 
-        <a className="text-blue-500 self-end" href="/register">
-          register with us
+        <a className="text-blue-500 self-end" href="/">
+          back to client
+        </a>
+
+        <a className="text-blue-500 self-end" href="/login">
+          Already registered? Login
         </a>
 
         <button
@@ -103,5 +121,4 @@ const Home = () => {
     </div>
   );
 };
-
-export default Home;
+export default RegisterPage;

@@ -1,24 +1,52 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-// This function can be marked `async` if using `await` inside
-export function middleware(request: NextRequest) {
-  const isAuthenticated = request.cookies.get("isAuthenticated");
+export function middleware(req: NextRequest) {
+  const isAuthenticated = req.cookies.get("isAuthenticated")?.value;
 
-  // Protect the generateForm route
-  if (!isAuthenticated && request.nextUrl.pathname === "/generateForm") {
-    return NextResponse.redirect(new URL("/", request.url)); // Redirect to home if not authenticated
+  // Redirect if the user is authenticated and tries to access login or register routes
+  if (isAuthenticated) {
+    const url = req.nextUrl.clone();
+
+    // Prevent redirect loop if already on /login or /register
+    if (url.pathname === "/login" || url.pathname === "/register") {
+      return NextResponse.redirect(new URL("/generateForm", req.url)); // Redirect to /generateForm
+    }
+
+    // Allow authenticated users to access other pages
+    if (
+      url.pathname === "/" ||
+      url.pathname === "/login" ||
+      url.pathname === "/register"
+    ) {
+      return NextResponse.redirect(new URL("/generateForm", req.url));
+    }
   }
 
-  // If authenticated and trying to access home, redirect to generateForm or another page
-  if (isAuthenticated && request.nextUrl.pathname === "/") {
-    return NextResponse.redirect(new URL("/generateForm", request.url)); // Change to your desired redirect page
+  // If user is not authenticated, only allow access to login and register routes
+  if (!isAuthenticated) {
+    const url = req.nextUrl.clone();
+
+    // Redirect unauthenticated users trying to access pages other than login or register
+    if (
+      url.pathname !== "/login" &&
+      url.pathname !== "/register" &&
+      url.pathname !== "/"
+    ) {
+      return NextResponse.redirect(new URL("/login", req.url)); // Redirect to login page
+    }
   }
 
+  // Allow the request to continue for other routes
   return NextResponse.next();
 }
 
-// Configuring the middleware to match the routes
 export const config = {
-  matcher: ["/generateForm", "/"], // Protect home and generateForm routes
+  matcher: [
+    "/",
+    "/login",
+    "/register",
+    "/users",
+    "/generateForm",
+    "/tamshukForm",
+  ], // Add any other routes you need to match
 };

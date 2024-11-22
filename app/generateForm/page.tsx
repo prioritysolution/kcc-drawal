@@ -6,6 +6,8 @@ import { IoPrintSharp } from "react-icons/io5";
 import { useReactToPrint } from "react-to-print";
 import Content from "@/components/Content";
 import { format } from "date-fns";
+import LogoutButton from "@/components/LogoutButton";
+import Link from "next/link";
 
 interface Info {
   Aadhar_No: string;
@@ -131,7 +133,17 @@ const GenerateForm = () => {
   };
 
   return (
-    <div className="w-screen h-full py-10">
+    <div className="w-screen h-full py-10 flex flex-col gap-5 px-20">
+      <div className="w-full flex items-center justify-between gap-5">
+        <Link
+          href={"/tamshukForm"}
+          className="px-5 py-3 rounded-md bg-blue-500 text-white font-semibold"
+        >
+          Go To Tamshuk Form
+        </Link>
+        <LogoutButton className=" px-5 py-3 rounded-md bg-red-500 text-white font-semibold" />
+      </div>
+
       <form
         className="w-[356mm] grid grid-cols-3 gap-5 m-auto border border-black rounded-md p-5"
         autoComplete="off"
@@ -254,12 +266,12 @@ const GenerateForm = () => {
             className="w-1/2 bg-blue-500 text-white rounded-md py-3 font-semibold disabled:bg-gray-400"
             disabled={showForm || showBlankForm}
           >
-            Submit
+            Update
           </button>
         </div>
       </form>
 
-      <div className="w-[356mm] flex items-center justify-center gap-10 m-auto p-5">
+      <div className="w-[343mm] flex items-center justify-center gap-10 m-auto p-5">
         <button
           className="w-[300px] bg-blue-500 text-white rounded-md py-3 font-semibold disabled:bg-gray-400"
           disabled={withoutButtonDisable}
@@ -283,7 +295,7 @@ const GenerateForm = () => {
       </div>
       {showBlankForm && (
         <div className="w-full h-full flex flex-col items-center py-10 gap-10 font-bengali">
-          <div className="w-[356mm] flex justify-end items-center font-roboto">
+          <div className="w-[343mm] flex justify-end items-center font-roboto">
             <button
               className="px-8 py-2 bg-blue-500 text-white text-xl flex items-center gap-3 rounded-md disabled:bg-gray-300 disabled:cursor-not-allowed"
               onClick={generateBlankPDF}
@@ -292,8 +304,8 @@ const GenerateForm = () => {
             </button>
           </div>
 
-          <div className="w-[356mm]" ref={printBlankRef}>
-            <div className="w-[356mm] h-[216mm] bg-white p-4 shadow-[10px_10px_40px_-15px_rgba(0,0,0,0.3)] flex flex-col justify-between gap-1 relative">
+          <div className="w-[343mm]" ref={printBlankRef}>
+            <div className="w-[343mm] h-[215mm] bg-white p-4 shadow-[10px_10px_40px_-15px_rgba(0,0,0,0.3)] flex flex-col justify-between gap-1 relative">
               {/* The content structure here remains the same as in your App component */}
               <div className="w-full h-full flex flex-col border border-black space-y-1 py-2 justify-between">
                 <div className="w-full">
@@ -301,7 +313,7 @@ const GenerateForm = () => {
                     <p className="text-wrap mt-2">
                       <span className="relative">
                         সমিতির নাম
-                        .................................................................................................................................................
+                        ............................................................................................................................
                         <span className="absolute left-24">
                           {headerInfoData.samitiName}
                         </span>
@@ -327,14 +339,13 @@ const GenerateForm = () => {
                       <br />
                       <span className="relative">
                         ঠিকানা : গ্রাম
-                        ....................................................................
+                        .......................................................
                         <span className="absolute left-24">
                           {headerInfoData.village}
                         </span>
                       </span>{" "}
                       <span className="relative">
-                        ডাকঘর
-                        ...................................................
+                        ডাকঘর ...............................................
                         <span className="absolute left-16">
                           {headerInfoData.postOffice}
                         </span>
@@ -498,7 +509,7 @@ const GenerateForm = () => {
                           >
                             ৯
                           </th>
-                          <th className="border border-gray-400 text-xs font-medium p-1 w-[80px]">
+                          <th className="border border-gray-400 text-xs font-medium p-1 w-[84px]">
                             ১০
                           </th>
                           <th className="border border-gray-400 text-xs font-medium p-1 w-[45px]">
@@ -603,7 +614,7 @@ const GenerateForm = () => {
 
       {showForm && (
         <div className="w-full h-full flex flex-col items-center py-10 gap-10 font-bengali">
-          <div className="w-[356mm] flex justify-between items-center font-roboto">
+          <div className="w-[343mm] flex justify-between items-center font-roboto">
             <input
               type="file"
               accept=".xlsx, .xls"
@@ -619,7 +630,7 @@ const GenerateForm = () => {
             </button>
           </div>
 
-          <div className="w-[356mm]" ref={printRef}>
+          <div className="w-[343mm]" ref={printRef}>
             {paginatedData.map((pageData, index) => (
               <Content key={index} data={pageData} formData={headerInfoData} />
             ))}
