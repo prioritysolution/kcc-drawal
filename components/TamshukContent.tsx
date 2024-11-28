@@ -155,8 +155,8 @@ const TamshukContent: React.FC<TamshukContentProps> = ({ data, formData }) => {
   return (
     <div className="w-[210mm] h-[297mm] bg-white p-4 shadow-[10px_10px_40px_-15px_rgba(0,0,0,0.3)] flex flex-col justify-between gap-1 relative">
       {/* The content structure here remains the same as in your App component */}
-      <div className="w-full h-full flex flex-col border border-transparent space-y-1 px-5 text-transparent">
-        <div className="w-full border-b-2 border-transparent border-dashed py-2">
+      <div className="w-full h-full flex flex-col border border-black space-y-1 px-5">
+        <div className="w-full border-b-2 border-black border-dashed py-2">
           <div className="w-full text-center flex flex-col">
             <h3 className="text-3xl font-semibold mb-1">
               {formData.samitiName}
@@ -400,7 +400,7 @@ const TamshukContent: React.FC<TamshukContentProps> = ({ data, formData }) => {
             </div>
           </div>
         </div>
-        <div className="w-full border-t-2 border-transparent h-full py-2 relative">
+        <div className="w-full border-t-2 border-black h-full py-2 relative">
           <p className="absolute -top-[13px] left-1/2 transform -translate-x-1/2 bg-white px-2">
             অফিস ব্যাবহার
           </p>
