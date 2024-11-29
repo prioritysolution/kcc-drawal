@@ -159,15 +159,15 @@ const TamshukContent: React.FC<TamshukContentProps> = ({ data, formData }) => {
         <div className="w-full border-b-2 border-black border-dashed py-2">
           <div className="w-full text-center flex flex-col">
             <h3 className="text-3xl font-semibold mb-1">
-              {formData.samitiName}
+              {formData?.samitiName}
             </h3>
             <p className="text-lg font-semibold">
-              রেজিঃ নং - {formData.regNo} এইচ.জি :: তাং-{" "}
-              {format(formData.date, "dd-MM-yyyy")}
+              রেজিঃ নং - {formData?.regNo} এইচ.জি :: তাং-{" "}
+              {format(formData?.date, "dd-MM-yyyy")}
             </p>
             <p className="text-xl font-semibold">
-              {formData.village} &diams; {formData.police} &diams;{" "}
-              {formData.district}
+              {formData?.village} &diams; {formData?.police} &diams;{" "}
+              {formData?.district}
             </p>
           </div>
           <div className="w-full ">
@@ -181,7 +181,7 @@ const TamshukContent: React.FC<TamshukContentProps> = ({ data, formData }) => {
               <span className="relative">
                 আমি শ্রী / শ্রীমতি .......................................
                 <span className="absolute bottom-0 left-32 text-nowrap text-black">
-                  {data.Member_Name}
+                  {data?.Member_Name}
                 </span>
                 <br />
               </span>
@@ -190,42 +190,42 @@ const TamshukContent: React.FC<TamshukContentProps> = ({ data, formData }) => {
                 পিতা / স্বামী
                 .........................................................................
                 <span className="absolute bottom-0 left-24 text-nowrap text-black">
-                  {data.Gurdain_Name}
+                  {data?.Gurdain_Name}
                 </span>
               </span>
               <span className="relative">
                 গ্রাম - .........................
                 <span className="absolute left-10 text-black text-sm bottom-0">
-                  {data.Village}
+                  {data?.Village}
                 </span>
               </span>
               ,
               <span className="relative">
                 পোঃ - .........................
                 <span className="absolute left-10 text-black text-sm bottom-0">
-                  {data.Post}
+                  {data?.Post}
                 </span>
               </span>
               ,
               <span className="relative">
                 ব্লক - .........................
                 <span className="absolute left-9 text-black text-sm bottom-0">
-                  {data.Block}
+                  {data?.Block}
                 </span>
               </span>
               ,
               <span className="relative">
                 জিলা - .........................
                 <span className="absolute left-12 text-black text-sm bottom-0">
-                  {data.Dist}
+                  {data?.Dist}
                 </span>
               </span>{" "}
-              <span className="font-semibold">{formData.samitiName}</span>
+              <span className="font-semibold">{formData?.samitiName}</span>
               -এর সভ্য এবং{" "}
               <span className="relative">
                 ..................................
                 <span className="absolute left-5 text-black">
-                  {data.Credit_card_No}
+                  {data?.Credit_card_No}
                 </span>
               </span>{" "}
               নং কৃষাণ ক্রেডিট কার্ডের অধিকারী। বিভিন্ন ফসলের জন্য আমি সমিতির
@@ -233,11 +233,18 @@ const TamshukContent: React.FC<TamshukContentProps> = ({ data, formData }) => {
               <span className="relative">
                 ..................................................
                 <span className="absolute  left-5 text-black">
-                  {data.Credit_limit_Amount}
+                  {data?.Credit_limit_Amount}
                 </span>
               </span>{" "}
-              টাকা ঋণ শতকরা ................................ টাকা হার সুদে
-              পরিশোধের অঙ্গীকারে এই অঙ্গীকারপত্র সুস্থ মনে স্বাক্ষর করিলাম।
+              টাকা ঋণ শতকরা{" "}
+              <span className="relative">
+                ................................
+                <span className="absolute text-nowrap left-5 bottom-[2px]">
+                  7 to 10.5%
+                </span>
+              </span>{" "}
+              টাকা হার সুদে পরিশোধের অঙ্গীকারে এই অঙ্গীকারপত্র সুস্থ মনে
+              স্বাক্ষর করিলাম।
             </p>
           </div>
           <div className="w-full flex justify-between items-center py-2">
@@ -258,7 +265,7 @@ const TamshukContent: React.FC<TamshukContentProps> = ({ data, formData }) => {
                   কার্ড নং -
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <span className="absolute left-16 text-black">
-                    {data.Credit_card_No}
+                    {data?.Credit_card_No}
                   </span>
                 </span>
               </div>
@@ -266,7 +273,7 @@ const TamshukContent: React.FC<TamshukContentProps> = ({ data, formData }) => {
                 <p className="mb-2 relative">
                   তারিখ .............................{" "}
                   <span className="absolute text-nowrap left-24 text-black">
-                    {data.Date}
+                    {data?.Date}
                   </span>
                 </p>
                 <p>সমিতির ভারপ্রাপ্ত আধিকারিকের স্বাক্ষর </p>
@@ -276,11 +283,11 @@ const TamshukContent: React.FC<TamshukContentProps> = ({ data, formData }) => {
           <div className="w-full flex items-center justify-center gap-24 text-center pt-2">
             <div>
               <p>ম্যানেজার</p>
-              <p className="text-sm">{formData.samitiName}</p>
+              <p className="text-sm">{formData?.samitiName}</p>
             </div>
             <div>
               <p>সম্পাদক</p>
-              <p className="text-sm">{formData.samitiName}</p>
+              <p className="text-sm">{formData?.samitiName}</p>
             </div>
           </div>
         </div>
@@ -289,18 +296,18 @@ const TamshukContent: React.FC<TamshukContentProps> = ({ data, formData }) => {
             <p className="font-semibold relative">
               ................. LIMIT .................
               <span className="absolute left-[270px] font-normal text-black">
-                {data.Crop_Name}
+                {data?.Crop_Name}
               </span>
               <span className="absolute right-[270px] font-normal text-black">
-                {data.Crop_Limit_Amount}
+                {data?.Crop_Limit_Amount}
               </span>
             </p>
             <h3 className="text-3xl font-semibold mb-1">
-              {formData.samitiName}
+              {formData?.samitiName}
             </h3>
             <p className="text-lg font-semibold">
-              রেজিঃ নং - {formData.regNo} এইচ.জি :: তাং-{" "}
-              {format(formData.date, "dd-MM-yyyy")}
+              রেজিঃ নং - {formData?.regNo} এইচ.জি :: তাং-{" "}
+              {format(formData?.date, "dd-MM-yyyy")}
             </p>
           </div>
           <div className="w-full ">
@@ -310,19 +317,19 @@ const TamshukContent: React.FC<TamshukContentProps> = ({ data, formData }) => {
               <p className="relative">
                 C.L. ....................
                 <span className="absolute left-12 text-black">
-                  {data.Credit_Limit_No}
+                  {data?.Credit_Limit_No}
                 </span>
               </p>
             </div>
 
             <p className="w-full mb-2">
               <span className="text-lg font-semibold">
-                {formData.samitiName}
+                {formData?.samitiName}
               </span>{" "}
               <span className="relative">
                 আমি শ্রী / শ্রীমতি .............................................
                 <span className="absolute left-32 bottom-[26px] text-nowrap text-black">
-                  {data.Member_Name}
+                  {data?.Member_Name}
                 </span>
               </span>
               ...........................................................................{" "}
@@ -330,36 +337,36 @@ const TamshukContent: React.FC<TamshukContentProps> = ({ data, formData }) => {
                 পিতা / স্বামী
                 .....................................................................
                 <span className="absolute left-24 text-nowrap text-black">
-                  {data.Gurdain_Name}
+                  {data?.Gurdain_Name}
                 </span>
               </span>
               <span className="relative">
                 ক্রেডিট কার্ড হোল্ডিং নং
                 ............................................
                 <span className="absolute left-40 text-black">
-                  {data.Credit_card_No}
+                  {data?.Credit_card_No}
                 </span>
               </span>{" "}
-              আমি <span className="font-semibold">{formData.samitiName}</span>
+              আমি <span className="font-semibold">{formData?.samitiName}</span>
               -এর নিকট হইতে
               <span className="relative">
                 ....................................................................
                 <span className="absolute left-8 text-black">
-                  {data.Credit_card_No}
+                  {data?.Credit_card_No}
                 </span>
               </span>
               নং কৃষাণ ক্রেডিট কার্ডের নির্ধারিত কর্জ সীমার মধ্য হইতে{" "}
               <span className="relative">
                 ..................................
                 <span className="absolute left-5 text-black">
-                  {data.Crop_Name}
+                  {data?.Crop_Name}
                 </span>
               </span>{" "}
               চাষের জন্য{" "}
               <span className="relative">
                 ..............................
                 <span className="absolute left-5 text-black">
-                  {data.Loan_Amount}
+                  {data?.Loan_Amount}
                 </span>
               </span>{" "}
               টাকা{" "}
@@ -367,9 +374,11 @@ const TamshukContent: React.FC<TamshukContentProps> = ({ data, formData }) => {
                 ( ..........................................................
                 ........................................... ) নগদে বুঝিয়া
                 পাইলাম।
-                <span className="absolute left-10 bottom-6 text-nowrap text-black">
-                  {data.Loan_Amount && convertToWords(data.Loan_Amount)} Only
-                </span>
+                {data.Loan_Amount && (
+                  <span className="absolute left-10 bottom-6 text-nowrap text-black">
+                    {convertToWords(data.Loan_Amount)} Only
+                  </span>
+                )}
               </span>
             </p>
           </div>
@@ -378,12 +387,14 @@ const TamshukContent: React.FC<TamshukContentProps> = ({ data, formData }) => {
               <p className="relative">
                 টাকা ...............................................
                 <span className="absolute left-12 text-black">
-                  {data.Loan_Amount}
+                  {data?.Loan_Amount}
                 </span>
               </p>
               <p className="relative">
                 তারিখ .............................................
-                <span className="absolute left-12 text-black">{data.Date}</span>
+                <span className="absolute left-12 text-black">
+                  {data?.Date}
+                </span>
               </p>
             </div>
 
@@ -394,7 +405,7 @@ const TamshukContent: React.FC<TamshukContentProps> = ({ data, formData }) => {
                 কার্ড নং -
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span className="absolute left-32 text-black">
-                  {data.Credit_card_No}
+                  {data?.Credit_card_No}
                 </span>
               </p>
             </div>
@@ -408,15 +419,17 @@ const TamshukContent: React.FC<TamshukContentProps> = ({ data, formData }) => {
             <span className="relative">
               টাকা .................................
               <span className="absolute left-12 text-black">
-                {data.Loan_Amount}
+                {data?.Loan_Amount}
               </span>
             </span>{" "}
             <span className="relative">
               কথায়
               ............................................................................
-              <span className="absolute left-16 text-nowrap text-black">
-                {data.Loan_Amount && convertToWords(data.Loan_Amount)} Only
-              </span>
+              {data.Loan_Amount && (
+                <span className="absolute left-16 text-nowrap text-black">
+                  {convertToWords(data.Loan_Amount)} Only
+                </span>
+              )}
             </span>
             মঞ্জুর করা হল।
           </p>
@@ -427,11 +440,11 @@ const TamshukContent: React.FC<TamshukContentProps> = ({ data, formData }) => {
             <div className="w-full flex items-center justify-center gap-24 text-center">
               <div>
                 <p>ম্যানেজার</p>
-                <p className="text-sm">{formData.samitiName}</p>
+                <p className="text-sm">{formData?.samitiName}</p>
               </div>
               <div>
                 <p>সম্পাদক</p>
-                <p className="text-sm">{formData.samitiName}</p>
+                <p className="text-sm">{formData?.samitiName}</p>
               </div>
             </div>
           </div>
