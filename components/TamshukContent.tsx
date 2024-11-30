@@ -178,14 +178,13 @@ const TamshukContent: React.FC<TamshukContentProps> = ({ data, formData }) => {
               <span className="text-lg font-semibold">
                 অদ্য হইতে ১২ (বারো) মাসের মধ্যে পরিশোধের অঙ্গীকারে
               </span>{" "}
+              আমি শ্রী / শ্রীমতি ..........................................{" "}
               <span className="relative">
-                আমি শ্রী / শ্রীমতি .......................................
-                <span className="absolute bottom-0 left-32 text-nowrap text-black">
+                .......................................................................
+                <span className="absolute bottom-0 left-5 text-black text-nowrap ">
                   {data?.Member_Name}
                 </span>
-                <br />
               </span>
-              .......................................................................{" "}
               <span className="relative">
                 পিতা / স্বামী
                 .........................................................................
@@ -326,13 +325,13 @@ const TamshukContent: React.FC<TamshukContentProps> = ({ data, formData }) => {
               <span className="text-lg font-semibold">
                 {formData?.samitiName}
               </span>{" "}
+              আমি শ্রী / শ্রীমতি .............................................{" "}
               <span className="relative">
-                আমি শ্রী / শ্রীমতি .............................................
-                <span className="absolute left-32 bottom-[26px] text-nowrap text-black">
+                ...........................................................................{" "}
+                <span className="absolute left-5 bottom-0 text-nowrap text-black">
                   {data?.Member_Name}
                 </span>
               </span>
-              ...........................................................................{" "}
               <span className="relative">
                 পিতা / স্বামী
                 .....................................................................
